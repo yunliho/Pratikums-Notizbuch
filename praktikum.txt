@@ -1,0 +1,71 @@
+
+==> Wie stellst du dir dein Praktikum vor, was erwartest du und was möchtest du am Ende gern gelernt haben?
+
+# Linux
+####################
+  ## Kommandozeile
+  ####################
+
+    Wichtige Kommandos
+==> Mache dich mit der Kommandozeile vertraut (siehe Links) und schreibe zu jedem Befehl eine kurze Beschreibung.
+      man : Mit man (manual)kann man eine Dokumentation zu fast jedem Programm anzeigen lassen.
+      help : Mit help kann man auch eine Dokumentation zu fast jedem Programm anzeigen lassen, aber in einer verknappten Version.
+             Sie zeigt dann nur die Programme an , die auch geübtere Anwender nicht im Kopf haben.
+      cd : Mit cd (change directory) kann man sich zwischen den Verzeichnissen bewegen.
+      mkdir : Zum Anlegen eines Verzeichnisses benutzt man mkdir (make directory):
+      mv : zum Verschieben und Umbennenen benutzt man mv(move)
+      cp : man kann damit Dateien kopieren.
+      touch : man kann damit leere Dateien erzeugen
+      grep : Man kann grep verwenden, um mit der Standardausgabe eines anderen Befehls als Quelle, Zeilen mit einem bestimmten Muster 
+             herauszufiltern und auszugeben.
+      whatis : durchsucht die Indexdatenbank nach Kurzbeschreibungen
+
+    Weitere Wichtige Kommandos:
+==> Welche anderen wichtigen Befehle hast du gelernt, und was tun sie? (kurz)
+      git
+      man -k
+
+    Links
+      Kommandozeile
+==>     terminus, ist wie ein Spiel: http://web.mit.edu/mprat/Public/web/Terminus/Web/main.html
+        linux in 90 minuten: http://www.ernstlx.com/linux90bash.html
+      Git
+==>     try git, eine Einführung: https://try.github.io/
+        git real, fortgeschritten: http://gitreal.codeschool.com/levels/1/challenges/1
+        git game, ein Rätselspiel, schwierig: https://github.com/git-game/git-game
+        github.com
+
+
+# Programmieren
+####################
+
+  ## Python
+  ####################
+
+    Tutorial
+==> Suche dir eines dieser Tutorials aus und mache dich mit Python bekannt
+      python, computer science circles: https://cscircles.cemc.uwaterloo.ca/
+      python3, deutsch: https://www.python-kurs.eu/python3_interaktiv.php
+      interaktiv: https://snakify.org/
+      terminal apps: http://introtopython.org/terminal_apps.html
+
+      checkio, wie ein Spiel: https://py.checkio.org/
+
+      "learn python the hard way", mit Aufgaben: http://www.souravsengupta.com/cds2015/python/LPTHW.pdf
+
+    Links
+      Programmieraufgaben
+        timus: http://acm.timus.ru/
+        project euler: https://projecteuler.net/
+
+
+# Mathe
+####################
+
+  ## Optimierung
+  ####################
+
+    Klassische Optimierungsprobleme
+==> Überlege dir, zu welchem Problem du eine Lösung finden möchtest, hier einige Vorschläge:
+      Finde den kürzesten Weg von einer Station zu einer anderen im Ubahn Netz: Dijkstra
+      
