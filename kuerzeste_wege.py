@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import sys
+
 # Repräsentation der Zahl "unendlich"
 UNENDLICH = float('inf')
 # Repräsentation von "nicht spezifiziert" oder "keine Information"
@@ -350,8 +352,12 @@ if __name__ == '__main__':
     graph[(3,5)]=2
 
     # Finde den kuerzesten Weg zwischen Start und Ziel.
-    start = 1
-    ziel = 4
+    start = int(sys.argv[1])
+    ziel = int(sys.argv[2])
+    if start > 5 or ziel > 5 :
+       beende_programm('Knoten ist nicht im Graphen')
+    if start < 0 or ziel < 0:
+       beende_programm('Knoten muss positiv sein')
     abstaende, vorgaenger=berechne_kuerzeste_wege_von(graph, start)
     print(schreibe_weg(start, ziel, abstaende, vorgaenger))
     # ...... dein code .......
