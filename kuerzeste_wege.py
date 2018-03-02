@@ -52,6 +52,7 @@ def beende_programm(nachricht):
     print(nachricht)    
     exit(0)
 
+
 def graph_abstand(graph, knoten1, knoten2):
     '''
     Gib den Abstand zweier Knoten in einem Graphen zurück.
@@ -83,15 +84,17 @@ def graph_abstand(graph, knoten1, knoten2):
         Der Abstand zwischen knoten1 und knoten2.
     '''
     if knoten1>knoten2:
-       n=knoten1
-       knoten1=knoten2
-       knoten2=n
+       # n=knoten1
+       # knoten1=knoten2
+       # knoten2=n
+       knoten1, knoten2 = tausche(knoten1, knoten2)
     if (knoten1, knoten2) not in graph.keys():
        beende_programm("Kann gesuchte Kante im Graphen nicht finden.")
     elif graph[(knoten1, knoten2)]<=0:
        beende_programm("Nichtpositive Kantengewichte sind verboten.")
     elif graph[(knoten1, knoten2)]>0:
        return graph[(knoten1, knoten2)]
+
 
 def sind_nachbarn(graph, knoten1, knoten2):
     '''
@@ -116,15 +119,21 @@ def sind_nachbarn(graph, knoten1, knoten2):
         'True', wenn 'knoten1' und 'knoten2' verbunden sind, ansonsten 'False'.
     '''
     if knoten1>knoten2:
-       n=knoten1
-       knoten1=knoten2
-       knoten2=n
+       # n=knoten1
+       # knoten1=knoten2
+       # knoten2=n
+       knoten1, knoten2 = tausche(knoten1, knoten2)
     if graph[(knoten1, knoten2)]<UNENDLICH:
        return True
     else:
        return False 	 		
    
     
+def tausche(k1, k2):
+    '''
+    Gib k1 und k2 in der umgekehrten Reihenfolge zurück.
+    '''
+    return k2, k1
 
 
 def alle_nachbarknoten(graph, knoten):
@@ -149,7 +158,7 @@ def alle_nachbarknoten(graph, knoten):
     '''
     nachbarn = set()
     for knoten2 in graph['alleknoten']:
-        if sind_nachbarn(graph, knoten, knoten2)== True:
+        if sind_nachbarn(graph, knoten, knoten2):
            nachbarn.add(knoten2)
     return nachbarn   
 
@@ -178,13 +187,26 @@ def naechster_knoten(knotenmenge, abstaende):
        beende_programm("Knotenmenge darf nicht leer sein.")
         
     x=set()
+    # finde den minimalen abstand
     for k in knotenmenge:
        y=abstaende[k]
        x.add(y)
        ka=min(x) 
+
+    # gib einen knoten zurück, der minimalen Abstand hat
     for k in knotenmenge:       
         if ka == abstaende[k]:
            return k
+
+    # alternativ
+    #minimum = UNENDLICH
+    #mini_knoten = knotenmenge[0]
+    #for knoten in knotenmenge:
+    #    if abstaende[knoten] < minimum:
+    #         minimum = abstaende[knoten]
+    #         mini_knoten = knoten
+    #return mini_knoten
+
 
 def berechne_kuerzeste_wege_von(graph, start):
     '''
@@ -211,6 +233,7 @@ def berechne_kuerzeste_wege_von(graph, start):
     vorgaenger : dict(int -> int)
         Für jeden Knoten i gibt vorgaenger[i] den Vorgängerknoten im kürzesten Weg an.
     '''
+    # bereite variablen vor: initialisierung 
     Q=set()
     abstaende={}
     vorgaenger={}
@@ -218,6 +241,8 @@ def berechne_kuerzeste_wege_von(graph, start):
         abstaende[v]=UNENDLICH
         vorgaenger[v]=NICHTS
         Q.add(v)
+
+    # dijkstra algorithmus
     abstaende[start]=0
     while len(Q) != 0:
           u= naechster_knoten(Q,abstaende)
@@ -228,6 +253,8 @@ def berechne_kuerzeste_wege_von(graph, start):
                  abstaende[v]=alt
                  vorgaenger[v]=u
     return abstaende, vorgaenger
+
+
 def schreibe_weg(start, ziel, abstaende, vorgaenger):
     '''
     Gib eine lesbare Repräsentation des Wegs zwischen Start und Ziel zurück.
@@ -287,6 +314,7 @@ def schreibe_weg(start, ziel, abstaende, vorgaenger):
     output = l + "\n" + s
     return output
 
+
 def konstruiere_leeren_graphen(knotenanzahl):
     '''
     Konstruiere einen leeren Graphen mit Knoten 0 bis ('knotenanzahl' - 1)
@@ -318,11 +346,11 @@ def konstruiere_leeren_graphen(knotenanzahl):
     for i in range (0, knotenanzahl):
         for j in range (0, knotenanzahl):
             if i > j :
-               k1=i
-               k2=j
-               graph[(k2, k1)] = UNENDLICH
+               graph[(j, i)] = UNENDLICH
             else:
                graph[(i,j)] = UNENDLICH
+        #for j in range (i, knotenanzahl):
+        #    graph[(i,j)] = UNENDLICH
     return graph 
 
 
